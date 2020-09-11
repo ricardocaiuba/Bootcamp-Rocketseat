@@ -1,0 +1,21 @@
+{
+  "name": "desafio-backend-nodejs",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "author": "Ricardo Rodrigues",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "uuidv4": "^6.2.3"
+  }
+}
