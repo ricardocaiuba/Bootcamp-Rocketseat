@@ -15,8 +15,6 @@ const App = () => {
   }, []);
 
   async function handleAddProject() {
-    //setProjects([...projects, `Novo projeto ${Date.now()}`]);
-
     const newProject = {
       title: `Projeto: ${Date.now()}`,
       owner: "Ricardo Rodrigues dos Santos",
