@@ -1,12 +1,12 @@
 import { Router } from "express";
 import appointmentsRouter from "./appointments.routes";
 import usersRouter from "./users.routes";
-
-const recourse = ["/appointments", "/users"];
+import sesionsRouter from "./sessions.routes";
 
 const routes = Router();
 
-routes.use(recourse[0], appointmentsRouter);
-routes.use(recourse[1], usersRouter);
+routes.use("/appointments", appointmentsRouter);
+routes.use("/users", usersRouter);
+routes.use("/sessions", sesionsRouter);
 
 export default routes;
