@@ -1,9 +1,9 @@
-import React, { useRef, useCallback, useContext } from "react";
+import React, { useRef, useCallback } from "react";
 import { FiLogIn, FiMail, FiLock } from "react-icons/fi";
 import { FormHandles } from "@unform/core";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 import getValidationErrors from "../../utils/getValidationErrors";
 
 import logoImg from "../../assets/logo.svg";
@@ -20,9 +20,7 @@ interface SingInFormData {
 const SingIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useAuth();
-
-  console.log(user);
+  const { signIn } = useAuth();
 
   const handleSubmit = useCallback(
     async (data: SingInFormData) => {
@@ -44,9 +42,11 @@ const SingIn: React.FC = () => {
           password: data.password,
         });
       } catch (error) {
-        console.log(error);
-        const errors = getValidationErrors(error);
-        formRef.current?.setErrors(errors);
+        if (error instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(error);
+          formRef.current?.setErrors(errors);
+        }
+        //disparar toast
       }
     },
     [signIn]
