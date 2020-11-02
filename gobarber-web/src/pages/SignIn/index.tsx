@@ -44,6 +44,11 @@ const SingIn: React.FC = () => {
           email: data.email,
           password: data.password,
         });
+        addToast({
+          type: "success",
+          title: "Sucesso!",
+          description: "Credenciais válidas.",
+        });
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
